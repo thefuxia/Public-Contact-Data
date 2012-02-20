@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Public Contact Data v2012.02.19\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-02-19 02:01+0000\n"
+"Last-Translator: toscho <info@toscho.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "Public Contact Data"
+msgstr "Öffentliche Kontaktdaten"
+
+#. translators: plugin header field 'Author'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "Thomas Scholz <info@toscho.de>"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "http://toscho.de"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "2012.02.19"
+msgstr ""
+
+#: public-contact-data.php:408
+#, php-format
+#@ plugin_pcd
+msgid "Invalid field: %1$s. Allowed fields: %2$s."
+msgstr "Ungültiges Feld: %1$s. Erlaubte Felder: %2$s."
+
+#: public-contact-data.php:167
+#@ plugin_pcd
+msgid "Public mail address"
+msgstr "Öffentliche E-Mail-Adresse"
+
+#: public-contact-data.php:168
+#@ plugin_pcd
+msgid "Public phone number"
+msgstr "Öffentliche Telefonnummer"
+
+#: public-contact-data.php:195
+#@ plugin_pcd
+msgid "Set public data"
+msgstr "Öffentliche Daten einstellen"
+
+#. translators: plugin header field 'Description'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "Adds new fields to settings/general: email address, phone number and social network URIs."
+msgstr "Erzeugt neue Felder unter Einstellungen/Allgemein: E-Mail-Adresse, Telefonnummer und URIs für soziale Netzwerke."
+
+#: public-contact-data.php:169
+#@ plugin_pcd
+msgid "Google Plus"
+msgstr ""
+
+#: public-contact-data.php:170
+#@ plugin_pcd
+msgid "FaceBook"
+msgstr ""
+
+#: public-contact-data.php:171
+#@ plugin_pcd
+msgid "Twitter"
+msgstr ""
+
+#: public-contact-data.php:301
+#, php-format
+#@ plugin_pcd
+msgid "%1$s is not a valid email address. <br /> Your admin email %2$s will be used instead."
+msgstr "%1$s ist keine gültige E-Mail-Adresse. <br /> Ihre Administrator-Adresse %2$s wird statt dessen benutzt."
+
+#: public-contact-data.php:271
+#, php-format
+#@ plugin_pcd
+msgid ""
+"The phone number %1$s has been changed to %2$s.\n"
+"\t\t\t\tPlease check if it is still okay.\n"
+"\t\t\t\tReplace spaces with %3$s if you need separators."
+msgstr "Die Telefonnummer %1$s wurde zu %2$s umgewandelt. Bitte prüfen Sie, ob das noch passt. Ersetzen Sie Leerzeichen mit %3$s, falls Sie welche brauchen."
+
+#: public-contact-data.php:341
+#, php-format
+#@ plugin_pcd
+msgid "You may use %s in editor fields to get this value."
+msgstr "Sie können %s schreiben, um das Feld im Editor zu verwenden."
+
