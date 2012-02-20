@@ -133,9 +133,6 @@ class Public_Contact_Data
 		add_filter( 'admin_init',      array( $this, 'add_contact_fields' ) );
 		// Public interface
 		add_action( 'pcd',             array( $this, 'action_handler' ), 10, 2 );
-		// Here I need a catch all handler. Or __call() or a closure …
-		add_shortcode( 'public_email',  array( $this, 'email_shortcode' ) );
-		add_shortcode( 'public_phone', array( $this, 'phone_shortcode' ) );
 	}
 
 	/**
@@ -177,6 +174,12 @@ class Public_Contact_Data
 			$this->prefix . '_fields',
 			$this->fields
 		);
+
+		// Register shortcodes.
+		foreach ( $this->fields as $key => $value )
+		{
+			add_shortcode( "public_$key", array( $this, 'shortcode_handler' ) );
+		}
 	}
 
 	/**
@@ -332,20 +335,19 @@ class Public_Contact_Data
 		$name = $this->option_name . '[' . $type . ']';
 		print "<input type='$type' value='$value' name='$name' id='$id'
 			class='regular-text code' />";
+		printf( ' <span class="description">' . __(
+			'You may use %s in editor fields to get this value.',
+			'plugin_pcd' )
+		. '</span>', "<code>[public_$type]</code>" );
 
-		switch ( $type )
-		{
-			case 'email':
-			case 'phone':
-				printf( ' <span class="description">'
-				. __(
-					'You may use %s in editor fields to get this value.',
-					'plugin_pcd'
-				)
-				. '</span>', "<code>[public_$type]</code>" );
-		}
 	}
 
+	/**
+	 * Deletes the option.
+	 *
+	 * @see register_deactivation_hook()
+	 * @return void
+	 */
 	public function deactivate()
 	{
 		new self( 'deactivate' );
@@ -439,53 +441,27 @@ class Public_Contact_Data
 	}
 
 	/**
-	 * Intened to be THE handler fopr all shortcodes.
+	 * Handler for all shortcodes.
 	 *
 	 * @param  array  $args
+	 * @param  NULL   $content Not used.
+	 * @param  string $shortcode Name of the current shortcode.
 	 * @return string
 	 */
-	public function shortcode_handler(  $args = array () )
+	public function shortcode_handler(  $args = array (), $content = NULL, $shortcode = '' )
 	{
-		// Just an idea so far …
-	}
-
-	/**
-	 * returns the currently used shortcode. Sometimes.
-	 *
-	 * @return string
-	 */
-	protected function current_shortcode()
-	{
-		$backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
-		#return '<pre>' . htmlspecialchars( print_r( $backtrace, TRUE ) ) . '</pre>';
-		$dump = $backtrace[3]['args'][0][2];
-		return '<pre>' . htmlspecialchars( print_r( $dump, TRUE ) ) . '</pre>';
-	}
-
-	/**
-	 * Handles shortcode [public_mail]
-	 *
-	 * @uses   action_handler()
-	 * @param  array  $args Shortcode arguments.
-	 * @return string
-	 */
-	public function email_shortcode( $args = array () )
-	{
-		#return $this->current_shortcode();
+		$key = $this->current_shortcode_key( $shortcode );
 		$args['print'] = FALSE;
-		return $this->action_handler( 'email', $args );
+		return $this->action_handler( $key, $args );
 	}
 
 	/**
-	 * Handles shortcode [public_phone]
+	 * Returns the currently used shortcode. Sometimes.
 	 *
-	 * @uses   action_handler()
-	 * @param  array  $args Shortcode arguments.
 	 * @return string
 	 */
-	public function phone_shortcode( $args = array () )
+	protected function current_shortcode_key( $shortcode )
 	{
-		$args['print'] = FALSE;
-		return $this->action_handler( 'phone', $args );
+		return substr( $shortcode, 7 );
 	}
 }
