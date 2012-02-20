@@ -24,7 +24,7 @@ Sample code:
 		return $fields;
 	}
 
-You get a shortcode for each field build as `[public_$fieldname]`. 
+You get a [shortcode][1] for each field build as `[public_$fieldname]`. 
 So `[public_email]` will return the email, `[public_github]` the value from
 your custom GitHub field.
 
@@ -42,10 +42,13 @@ To get an email link use:
 
 	do_action( 'pcd', 'email', array ( 'before' => 'Email: ' ) );
 	
-The email address is always … obfuscated with `antispambot()`. 
+The email address is always … obfuscated with [`antispambot()`][2]. 
 Won’t help much, but it doesn’t hurt too.
 
 The plugin is translatable. A German translation is already done. 
 Language files are loaded in `wp-admin` only to save performance.
 
 ![screenshot](screenshot.png "Translated backend")
+
+[1]: http://codex.wordpress.org/Shortcode_API
+[2]: http://codex.wordpress.org/Function_Reference/antispambot
