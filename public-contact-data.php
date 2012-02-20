@@ -129,7 +129,17 @@ class Public_Contact_Data
 
 		$this->load_language_files();
 		$this->set_fields();
+		$this->set_hooks();
+	}
 
+	/**
+	 * Add filters and register the shortcodes.
+	 *
+	 * @see    __construct()
+	 * @return void
+	 */
+	protected function set_hooks()
+	{
 		add_filter( 'plugin_row_meta', array( $this, 'add_settings_link' ), 10, 2 );
 		add_filter( 'admin_init',      array( $this, 'add_contact_fields' ) );
 		// Public interface
