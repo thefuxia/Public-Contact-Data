@@ -2,6 +2,7 @@
 declare( encoding = 'UTF-8' );
 /**
  * Plugin Name: Public Contact Data
+ * Plugin URI:  https://github.com/toscho/Public-Contact-Data
  * Text Domain: plugin_pcd
  * Domain Path: /lang
  * Description: Adds new fields to settings/general: email address, phone number and social network URIs.
