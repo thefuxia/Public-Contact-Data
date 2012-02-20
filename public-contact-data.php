@@ -391,13 +391,7 @@ class Public_Contact_Data
 	 */
 	public function action_handler( $field, $options = array () )
 	{
-		$defaults = array (
-			'before' => '',
-			'after'  => '',
-			'link'   => TRUE,
-			'print'  => TRUE
-		);
-		$args = (object) array_merge( $defaults, $options );
+		$args = $this->set_action_args( $options );
 		$out  = '';
 
 		// Unknown field requested.
@@ -419,6 +413,17 @@ class Public_Contact_Data
 
 		$args->print and print $out;
 		return $out;
+	}
+
+	protected function set_action_args( array $options )
+	{
+		$defaults = array (
+			'before' => '',
+			'after'  => '',
+			'link'   => TRUE,
+			'print'  => TRUE
+		);
+		return (object) array_merge( $defaults, $options );
 	}
 
 	/**
