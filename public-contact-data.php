@@ -179,10 +179,8 @@ class Public_Contact_Data
 		);
 
 		// You may extend or restrict the fields.
-		$this->fields = apply_filters(
-			$this->prefix . '_fields',
-			$this->fields
-		);
+		$hook_name = $this->prefix . '_fields';
+		$this->fields = apply_filters( $hook_name, $this->fields );
 
 		// Register shortcodes.
 		foreach ( $this->fields as $key => $value )
