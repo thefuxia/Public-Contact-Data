@@ -157,11 +157,13 @@ class Public_Contact_Data
 	 *
 	 * @see    $fields
 	 * @uses   apply_filters() on $fields
+	 * @uses   add_shortcode()
+	 * @see    shortcode_handler()
 	 * @return void
 	 */
 	protected function set_fields()
 	{
-		// Pairs of 'key' => 'description'
+		// Pairs of 'key' => 'label'
 		$this->fields = array (
 			'email'      => __( 'Public mail address', 'plugin_pcd' ),
 			'phone'      => __( 'Public phone number', 'plugin_pcd' ),
@@ -205,6 +207,7 @@ class Public_Contact_Data
 	/**
 	 * Register custom settings for the fields.
 	 *
+	 * @see    save_settings()
 	 * @see    print_input_field()
 	 * @return void
 	 */
@@ -215,6 +218,7 @@ class Public_Contact_Data
 			$this->option_name,
 			array ( $this, 'save_settings' )
 		);
+
 		foreach ( $this->fields as $type => $desc )
 		{
 			$handle   = $this->option_name . "_$type";
@@ -238,7 +242,9 @@ class Public_Contact_Data
 	/**
 	 * Callback for 'register_setting()'.
 	 *
-	 * @param array $settings
+	 * @see    add_contact_fields()
+	 * @param  array $settings
+	 * @return array $settings
 	 */
 	public function save_settings( array $settings = array () )
 	{
@@ -253,6 +259,7 @@ class Public_Contact_Data
 	/**
 	 * Prepare the field 'phone' before saving it.
 	 *
+	 * @see    save_settings()
 	 * @param  array $settings
 	 * @return array
 	 */
@@ -263,6 +270,8 @@ class Public_Contact_Data
 			return $settings;
 		}
 
+		// Strip all characters which don’t fit in a 'tel:' link.
+		// Still not optimal: we may want visible white spaces in our output …
 		$new_phone = preg_replace( '~ +~', '-', $settings['phone'] );
 		$new_phone = preg_replace( '~[^\d+-]~', '', $new_phone );
 
@@ -291,6 +300,7 @@ class Public_Contact_Data
 	/**
 	 * Prepare the field 'email' before saving it.
 	 *
+	 * @see    save_settings()
 	 * @param  array $settings
 	 * @return array
 	 */
@@ -325,28 +335,28 @@ class Public_Contact_Data
 	 */
 	public function print_input_field( array $args )
 	{
-		$type  = $args['type'];
-		$id    = $args['label_for'];
-		$data  = get_option( $this->option_name, array() );
-		$value = $data[ $type ];
+		$type   = $args['type'];
+		$id     = $args['label_for'];
+		$data   = get_option( $this->option_name, array() );
+		$value  = $data[ $type ];
 
-		'email' == $type and '' == $value
-			and $value = $this->admin_mail;
-		$value = esc_attr( $value );
-		$name = $this->option_name . '[' . $type . ']';
-		print "<input type='$type' value='$value' name='$name' id='$id'
-			class='regular-text code' />";
-		printf( ' <span class="description">' . __(
+		'email' == $type and '' == $value and $value = $this->admin_mail;
+		$value  = esc_attr( $value );
+		$name   = $this->option_name . '[' . $type . ']';
+		$desc   = __(
 			'You may use %s in editor fields to get this value.',
-			'plugin_pcd' )
-		. '</span>', "<code>[public_$type]</code>" );
+			'plugin_pcd'
+		);
+		$desc   = sprintf( $desc, "<code>[public_$type]</code>" );
 
+		print "<input type='$type' value='$value' name='$name' id='$id'
+			class='regular-text code' /> <span class='description'>$desc</span>";
 	}
 
 	/**
 	 * Deletes the option.
 	 *
-	 * @see register_deactivation_hook()
+	 * @see    register_deactivation_hook()
 	 * @return void
 	 */
 	public function deactivate()
@@ -359,8 +369,7 @@ class Public_Contact_Data
 	/**
 	 * Handler for action 'pcd'
 	 *
-	 * @see    phone_shortcode()
-	 * @see    mail_shortcode()
+	 * @see    shortcode_handler()
 	 * @param  string $field    Key of a registered field.
 	 * @param  array  $options  'before', 'after', 'link' and 'print'.
 	 * @return string
@@ -408,15 +417,12 @@ class Public_Contact_Data
 		// The translation will currently not work:
 		// We load the language files in wp-admin only
 		// to reduce performance overhead.
-		$msg = __(
+		$msg          = __(
 			'Invalid field: %1$s. Allowed fields: %2$s.',
 			'plugin_pcd'
 		);
-		return sprintf(
-			$msg,
-			esc_html( $field ),
-			implode( ', ', $this->fields )
-		);
+		$valid_fields = implode( ', ', $this->fields );
+		return sprintf( $msg, esc_html( $field ), $valid_fields );
 	}
 
 	/**
@@ -444,6 +450,7 @@ class Public_Contact_Data
 	/**
 	 * Handler for all shortcodes.
 	 *
+	 * @see    set_fields() The shortcodes are registered there.
 	 * @param  array  $args
 	 * @param  NULL   $content Not used.
 	 * @param  string $shortcode Name of the current shortcode.
