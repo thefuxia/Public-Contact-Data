@@ -404,7 +404,12 @@ class Public_Contact_Data
 
 		$option = get_option( $this->option_name, '' );
 		$data   = esc_attr( $option[ $field ] );
-		'email' == $field and '' == $data and $data = $this->admin_mail;
+
+		if ( 'email' == $field and '' == $data )
+		{
+			$data = $this->admin_mail;
+		}
+
 		'email' == $field and $data = antispambot( $data );
 		$args->link and $data = $this->link_data( $data, $field );
 
@@ -415,6 +420,13 @@ class Public_Contact_Data
 		return $out;
 	}
 
+	/**
+	 * Parse arguments passed to action_handler() and return a data object.
+	 *
+	 * @see    action_handler()
+	 * @param  array  $options
+	 * @return object stdClass
+	 */
 	protected function set_action_args( array $options )
 	{
 		$defaults = array (
