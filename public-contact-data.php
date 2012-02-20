@@ -347,14 +347,25 @@ class Public_Contact_Data
 		'email' == $type and '' == $value and $value = $this->admin_mail;
 		$value  = esc_attr( $value );
 		$name   = $this->option_name . '[' . $type . ']';
+		$desc   = $this->get_shortcode_help( $type );
+
+		print "<input type='$type' value='$value' name='$name' id='$id'
+			class='regular-text code' /> <span class='description'>$desc</span>";
+	}
+
+	/**
+	 * Usage hint for input fields.
+	 *
+	 * @param  string $type
+	 * @return string
+	 */
+	protected function get_shortcode_help( $type )
+	{
 		$desc   = __(
 			'You may use %s in editor fields to get this value.',
 			'plugin_pcd'
 		);
-		$desc   = sprintf( $desc, "<code>[public_$type]</code>" );
-
-		print "<input type='$type' value='$value' name='$name' id='$id'
-			class='regular-text code' /> <span class='description'>$desc</span>";
+		return sprintf( $desc, "<code>[public_$type]</code>" );
 	}
 
 	/**
