@@ -501,8 +501,9 @@ class Public_Contact_Data
 	}
 
 	/**
-	 * Returns the currently used shortcode. Sometimes.
+	 * Returns the currently used shortcode.
 	 *
+	 * @link   http://wordpress.stackexchange.com/q/42882/73
 	 * @return string
 	 */
 	protected function current_shortcode_key( $shortcode )
