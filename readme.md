@@ -3,11 +3,11 @@ Public Contact Data
 
 WordPress plugin for your public visible contact data. Default fields:
 
-	* Email
-	* Phone number
-	* Google Plus
-	* Facebook
-	* Twitter
+* Email
+* Phone number
+* Google Plus
+* Facebook
+* Twitter
 
 You may extend or restrict the field list per filter.  
 Sample code:
