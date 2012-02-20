@@ -484,13 +484,18 @@ class Public_Contact_Data
 	 *
 	 * @see    set_fields() The shortcodes are registered there.
 	 * @param  array  $args
-	 * @param  NULL   $content Not used.
+	 * @param  string $content Not used.
 	 * @param  string $shortcode Name of the current shortcode.
 	 * @return string
 	 */
-	public function shortcode_handler(  $args = array (), $content = NULL, $shortcode = '' )
+	public function shortcode_handler(
+		$args      = array (),
+		$content   = '',
+		$shortcode = ''
+	)
 	{
 		$key = $this->current_shortcode_key( $shortcode );
+		// Shortcodes don’t print. They return strings only.
 		$args['print'] = FALSE;
 		return $this->action_handler( $key, $args );
 	}
