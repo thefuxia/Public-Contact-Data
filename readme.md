@@ -48,7 +48,11 @@ Won’t help much, but it doesn’t hurt too.
 The plugin is translatable. A German translation is already done. 
 Language files are loaded in `wp-admin` only to save performance.
 
+<<<<<<< HEAD
 ![screenshot](https://github.com/toscho/Public-Contact-Data/raw/master/screenshot.png "Translated backend")
+=======
+![screenshot](https://github.com/toscho/Public-Contact-Data/blob/master/screenshot.png "Translated backend")
+>>>>>>> origin/master
 
 [1]: http://codex.wordpress.org/Shortcode_API
 [2]: http://codex.wordpress.org/Function_Reference/antispambot
