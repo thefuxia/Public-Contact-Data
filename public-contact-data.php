@@ -32,7 +32,7 @@ declare( encoding = 'UTF-8' );
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-# @todo deactivation
+
 // Not a WordPress context? Stop.
 ! defined( 'ABSPATH' ) and exit;
 
