@@ -153,13 +153,9 @@ class Public_Contact_Data
 	 */
 	public function load_language_files()
 	{
+		$lang_dir = basename( __DIR__ ) . '/lang';
 		// We need the files in 'wp-admin' only.
-		is_admin() and
-		load_plugin_textdomain(
-			'plugin_pcd',
-			FALSE,
-			basename( __DIR__ ) . '/lang'
-		);
+		is_admin() and load_plugin_textdomain( 'plugin_pcd', FALSE, $lang_dir );
 	}
 
 	/**
