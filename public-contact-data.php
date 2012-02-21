@@ -140,10 +140,23 @@ class Public_Contact_Data
 	 */
 	protected function set_hooks()
 	{
-		add_filter( 'plugin_row_meta', array( $this, 'add_settings_link' ), 10, 2 );
-		add_filter( 'admin_init',      array( $this, 'add_contact_fields' ) );
+		add_filter(
+			'plugin_row_meta',
+			array( $this, 'add_settings_link' ),
+			10,
+			2
+		);
+		add_filter(
+			'admin_init',
+			array( $this, 'add_contact_fields' )
+		);
 		// Public interface
-		add_action( 'pcd',             array( $this, 'action_handler' ), 10, 2 );
+		add_action(
+			'pcd',
+			array( $this, 'action_handler' ),
+			10,
+			2
+		);
 	}
 
 	/**
@@ -317,7 +330,8 @@ class Public_Contact_Data
 
 		$msg = sprintf(
 			__(
-				'%1$s is not a valid email address. <br /> Your admin email %2$s will be used instead.',
+				'%1$s is not a valid email address. <br />
+				Your admin email %2$s will be used instead.',
 				'plugin_pcd'
 			),
 			'<code>' . $settings['email'] . '</code>',
@@ -325,7 +339,8 @@ class Public_Contact_Data
 		);
 		add_settings_error( $this->option_name, 'email', $msg );
 
-		$settings['email'] = isset ( $default['email'] ) ? $default['email'] : '';
+		$settings['email'] = isset ( $default['email'] )
+			? $default['email'] : '';
 
 		return $settings;
 	}
@@ -404,13 +419,8 @@ class Public_Contact_Data
 
 		$option = get_option( $this->option_name, '' );
 		$data   = esc_attr( $option[ $field ] );
+		$data   = $this->prepare_mail_output( $data, $field );
 
-		if ( 'email' == $field and '' == $data )
-		{
-			$data = $this->admin_mail;
-		}
-
-		'email' == $field and $data = antispambot( $data );
 		$args->link and $data = $this->link_data( $data, $field );
 
 		// Add 'before' and 'after' not to an empty string.
@@ -418,6 +428,16 @@ class Public_Contact_Data
 
 		$args->print and print $out;
 		return $out;
+	}
+
+	protected function prepare_mail_output( $data, $field )
+	{
+		if ( 'email' != $field )
+		{
+			return $data;
+		}
+		'' == $data and $data = $this->admin_mail;
+		return antispambot( $data );
 	}
 
 	/**
