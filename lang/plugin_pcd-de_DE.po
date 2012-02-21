@@ -37,29 +37,23 @@ msgstr ""
 msgid "http://toscho.de"
 msgstr ""
 
-#. translators: plugin header field 'Version'
-#: public-contact-data.php:0
-#@ plugin_pcd
-msgid "2012.02.19"
-msgstr ""
-
-#: public-contact-data.php:408
+#: public-contact-data.php:473
 #, php-format
 #@ plugin_pcd
 msgid "Invalid field: %1$s. Allowed fields: %2$s."
 msgstr "Ungültiges Feld: %1$s. Erlaubte Felder: %2$s."
 
-#: public-contact-data.php:167
+#: public-contact-data.php:187
 #@ plugin_pcd
 msgid "Public mail address"
 msgstr "Öffentliche E-Mail-Adresse"
 
-#: public-contact-data.php:168
+#: public-contact-data.php:188
 #@ plugin_pcd
 msgid "Public phone number"
 msgstr "Öffentliche Telefonnummer"
 
-#: public-contact-data.php:195
+#: public-contact-data.php:219
 #@ plugin_pcd
 msgid "Set public data"
 msgstr "Öffentliche Daten einstellen"
@@ -70,28 +64,22 @@ msgstr "Öffentliche Daten einstellen"
 msgid "Adds new fields to settings/general: email address, phone number and social network URIs."
 msgstr "Erzeugt neue Felder unter Einstellungen/Allgemein: E-Mail-Adresse, Telefonnummer und URIs für soziale Netzwerke."
 
-#: public-contact-data.php:169
+#: public-contact-data.php:189
 #@ plugin_pcd
 msgid "Google Plus"
 msgstr ""
 
-#: public-contact-data.php:170
+#: public-contact-data.php:190
 #@ plugin_pcd
 msgid "FaceBook"
 msgstr ""
 
-#: public-contact-data.php:171
+#: public-contact-data.php:191
 #@ plugin_pcd
 msgid "Twitter"
 msgstr ""
 
-#: public-contact-data.php:301
-#, php-format
-#@ plugin_pcd
-msgid "%1$s is not a valid email address. <br /> Your admin email %2$s will be used instead."
-msgstr "%1$s ist keine gültige E-Mail-Adresse. <br /> Ihre Administrator-Adresse %2$s wird statt dessen benutzt."
-
-#: public-contact-data.php:271
+#: public-contact-data.php:302
 #, php-format
 #@ plugin_pcd
 msgid ""
@@ -100,9 +88,31 @@ msgid ""
 "\t\t\t\tReplace spaces with %3$s if you need separators."
 msgstr "Die Telefonnummer %1$s wurde zu %2$s umgewandelt. Bitte prüfen Sie, ob das noch passt. Ersetzen Sie Leerzeichen mit %3$s, falls Sie welche brauchen."
 
-#: public-contact-data.php:341
+#: public-contact-data.php:380
 #, php-format
 #@ plugin_pcd
 msgid "You may use %s in editor fields to get this value."
 msgstr "Sie können %s schreiben, um das Feld im Editor zu verwenden."
+
+#. translators: plugin header field 'PluginURI'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "https://github.com/toscho/Public-Contact-Data"
+msgstr "http://toscho.de/2012/wordpress-plugin-oeffentliche-kontaktdaten/"
+
+#. translators: plugin header field 'Version'
+#: public-contact-data.php:0
+#@ plugin_pcd
+msgid "2012.02.21"
+msgstr ""
+
+#: public-contact-data.php:333
+#, php-format
+#@ plugin_pcd
+msgid ""
+"%1$s is not a valid email address. <br />\n"
+"\t\t\t\tYour admin email %2$s will be used instead."
+msgstr ""
+"%1$s its keine gültige E-Mail-Adresse. <br />\n"
+"\\\t\\\t\\\t\\\tIhre Administratoradresse %2$s wird statt dessen benutzt."
 
