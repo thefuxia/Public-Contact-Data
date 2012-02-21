@@ -1,6 +1,8 @@
 Public Contact Data
 ===================
 
+[Deutsche Beschreibung][3]
+
 WordPress plugin for your public visible contact data. Default fields:
 
 * Email
@@ -52,3 +54,4 @@ Language files are loaded in `wp-admin` only to save performance.
 
 [1]: http://codex.wordpress.org/Shortcode_API
 [2]: http://codex.wordpress.org/Function_Reference/antispambot
+[3]: http://toscho.de/2012/wordpress-plugin-oeffentliche-kontaktdaten/
