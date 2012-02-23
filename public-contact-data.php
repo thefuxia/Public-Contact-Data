@@ -421,7 +421,14 @@ class Public_Contact_Data
 		$data   = esc_attr( $option[ $field ] );
 		$data   = $this->prepare_mail_output( $data, $field );
 
-		$args->link and $data = $this->link_data( $data, $field );
+		if ( $args->pattern )
+		{
+			$data = str_replace( '%value%', $data, $args->pattern );
+		}
+		elseif ( $args->link )
+		{
+			$data = $this->link_data( $data, $field );
+		}
 
 		// Add 'before' and 'after' not to an empty string.
 		'' !== $data and $out = $args->before . $data . $args->after;
@@ -450,10 +457,11 @@ class Public_Contact_Data
 	protected function set_action_args( array $options )
 	{
 		$defaults = array (
-			'before' => '',
-			'after'  => '',
-			'link'   => TRUE,
-			'print'  => TRUE
+			'before'  => '',
+			'after'   => '',
+			'link'    => TRUE,
+			'print'   => TRUE,
+			'pattern' => FALSE
 		);
 		return (object) array_merge( $defaults, $options );
 	}
