@@ -34,10 +34,11 @@ There’s also an action named `pcd`. Its first parameter is the field name, the
 second an array of options:
 
 	$defaults = array (
-		'before' => '',
-		'after'  => '',
-		'link'   => TRUE,
-		'print'  => TRUE
+		'before'  => '',
+		'after'   => '',
+		'link'    => TRUE,
+		'print'   => TRUE
+		'pattern' => FALSE
 	);
 
 To get an email link use:
@@ -46,6 +47,9 @@ To get an email link use:
 	
 The email address is always … obfuscated with [`antispambot()`][2]. 
 Won’t help much, but it doesn’t hurt too.
+
+If you use the `pattern` argument the `link` argument will be ignored. 
+Use `%value%` as a placeholder for the field’s value in your pattern.
 
 The plugin is translatable. A German translation is already done. 
 Language files are loaded in `wp-admin` only to save performance.
