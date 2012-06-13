@@ -373,7 +373,7 @@ class Public_Contact_Data
 		$name   = $this->option_name . '[' . $type . ']';
 		$desc   = $this->get_shortcode_help( $type );
 
-		print "<input type='$type' value='$value' name='$name' id='$id'
+		print "<input type='text' value='$value' name='$name' id='$id'
 			class='regular-text code' /> <span class='description'>$desc</span>";
 	}
 
