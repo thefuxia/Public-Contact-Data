@@ -116,7 +116,7 @@ class Public_Contact_Data
 	 */
 	public function __construct( $context = 'normal' )
 	{
-		if ( 'deactivate' == $context )
+		if ( 'deactivate' === $context )
 		{
 			delete_option( $this->option_name );
 			return;
@@ -282,7 +282,7 @@ class Public_Contact_Data
 	 */
 	protected function prepare_phone_save( $settings )
 	{
-		if ( '' == $settings['phone'] )
+		if ( '' === $settings['phone'] )
 		{
 			return $settings;
 		}
@@ -292,7 +292,7 @@ class Public_Contact_Data
 		$new_phone = preg_replace( '~ +~', '-', $settings['phone'] );
 		$new_phone = preg_replace( '~[^\d+-]~', '', $new_phone );
 
-		if ( $settings['phone'] == $new_phone )
+		if ( $settings['phone'] === $new_phone )
 		{
 			return $settings;
 		}
@@ -323,7 +323,7 @@ class Public_Contact_Data
 	 */
 	protected function prepare_mail_save( $settings, $default )
 	{
-		if ( '' == $settings['email'] or is_email( $settings['email'] ) )
+		if ( '' === $settings['email'] or is_email( $settings['email'] ) )
 		{
 			return $settings;
 		}
@@ -359,7 +359,7 @@ class Public_Contact_Data
 		$data   = get_option( $this->option_name, array() );
 		$value  = $data[ $type ];
 
-		'email' == $type and '' == $value and $value = $this->admin_mail;
+		'email' === $type and '' === $value and $value = $this->admin_mail;
 		$value  = esc_attr( $value );
 		$name   = $this->option_name . '[' . $type . ']';
 		$desc   = $this->get_shortcode_help( $type );
@@ -439,11 +439,11 @@ class Public_Contact_Data
 
 	protected function prepare_mail_output( $data, $field )
 	{
-		if ( 'email' != $field )
+		if ( 'email' !== $field )
 		{
 			return $data;
 		}
-		'' == $data and $data = $this->admin_mail;
+		'' === $data and $data = $this->admin_mail;
 		return antispambot( $data );
 	}
 
@@ -494,14 +494,14 @@ class Public_Contact_Data
 	 */
 	protected function link_data( $data, $field )
 	{
-		if ( '' == $data )
+		if ( '' === $data )
 		{
 			return $data;
 		}
 
 		$prefix   = '';
-		'email' == $field and $prefix = 'mailto:';
-		'phone' == $field and $prefix = 'tel:';
+		'email' === $field and $prefix = 'mailto:';
+		'phone' === $field and $prefix = 'tel:';
 		$data = "<a href='$prefix$data'>$data</a>";
 
 		return $data;
