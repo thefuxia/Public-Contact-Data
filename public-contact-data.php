@@ -93,7 +93,7 @@ class Public_Contact_Data
 
 	/**
 	 * Creates a new instance. Called on 'after_setup_theme'.
-	 * May be used to acces class methods from outside.
+	 * May be used to access class methods from outside.
 	 *
 	 * @see    __construct()
 	 * @return void
