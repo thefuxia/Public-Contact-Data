@@ -366,7 +366,7 @@ class Public_Contact_Data
 		$type   = $args['type'];
 		$id     = $args['label_for'];
 		$data   = get_option( $this->option_name, array() );
-		$value  = $data[ $type ];
+		$value  = isset ( $data[ $type ] ) ? $data[ $type ] : '';
 
 		'email' === $type and '' === $value and $value = $this->admin_mail;
 		$value  = esc_attr( $value );
