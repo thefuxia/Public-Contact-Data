@@ -6,7 +6,7 @@ declare( encoding = 'UTF-8' );
  * Text Domain: plugin_pcd
  * Domain Path: /lang
  * Description: Adds new fields to settings/general: email address, phone number and social network URIs.
- * Version:     2012.02.21
+ * Version:     2012.06.13
  * Required:    3.3
  * Author:      Thomas Scholz <info@toscho.de>
  * Author URI:  http://toscho.de
