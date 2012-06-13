@@ -385,7 +385,7 @@ class Public_Contact_Data
 	 */
 	protected function get_shortcode_help( $type )
 	{
-		$desc   = __(
+		$desc = __(
 			'You may use %s in editor fields to get this value.',
 			'plugin_pcd'
 		);
@@ -400,7 +400,7 @@ class Public_Contact_Data
 	 */
 	public function deactivate()
 	{
-		new self( 'deactivate' );
+		new self ( 'deactivate' );
 	}
 
 // --- Public action and shortcode handlers ------------------------------------
@@ -427,7 +427,7 @@ class Public_Contact_Data
 		}
 
 		$option = get_option( $this->option_name, '' );
-		$data   = esc_attr( $option[ $field ] );
+		$data   = isset ( $option[ $field ] ) ? esc_attr( $option[ $field ] ) : '';
 		$data   = $this->prepare_mail_output( $data, $field );
 
 		if ( $args->pattern )
