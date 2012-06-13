@@ -486,7 +486,7 @@ class Public_Contact_Data
 		// The translation will currently not work:
 		// We load the language files in wp-admin only
 		// to reduce performance overhead.
-		$msg          = __(
+		$msg = __(
 			'Invalid field: %1$s. Allowed fields: %2$s.',
 			'plugin_pcd'
 		);
@@ -508,12 +508,11 @@ class Public_Contact_Data
 			return $data;
 		}
 
-		$prefix   = '';
+		$prefix =   '';
 		'email' === $field and $prefix = 'mailto:';
 		'phone' === $field and $prefix = 'tel:';
-		$data = "<a href='$prefix$data'>$data</a>";
 
-		return $data;
+		return "<a href='$prefix$data'>$data</a>";
 	}
 
 	/**
