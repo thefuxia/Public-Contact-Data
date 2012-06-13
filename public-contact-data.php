@@ -43,7 +43,10 @@ register_deactivation_hook(
 );
 
 // Wait until all needed functions are loaded.
-add_action( 'after_setup_theme', array ( 'Public_Contact_Data', 'instance' ) );
+add_action(
+	'after_setup_theme',
+	array ( 'Public_Contact_Data', 'instance' )
+);
 
 class Public_Contact_Data
 {
@@ -59,7 +62,7 @@ class Public_Contact_Data
 	 *
 	 * @type string
 	 */
-	protected $prefix      = 'pcd';
+	protected $prefix = 'pcd';
 
 	/**
 	 * Basename of this file.
@@ -67,7 +70,7 @@ class Public_Contact_Data
 	 * @see __construct()
 	 * @type string
 	 */
-	protected $base_name   = '';
+	protected $base_name = '';
 
 	/**
 	 * Option name
@@ -81,7 +84,7 @@ class Public_Contact_Data
 	 *
 	 * @type array
 	 */
-	protected $fields      = array();
+	protected $fields = array();
 
 	/**
 	 * Fallback for missing email address.
@@ -192,7 +195,7 @@ class Public_Contact_Data
 		);
 
 		// You may extend or restrict the fields.
-		$hook_name = $this->prefix . '_fields';
+		$hook_name    = $this->prefix . '_fields';
 		$this->fields = apply_filters( $hook_name, $this->fields );
 
 		// Register shortcodes.
@@ -210,7 +213,7 @@ class Public_Contact_Data
 	 */
 	public function add_settings_link( $links, $file )
 	{
-		if ( $this->base_name != $file )
+		if ( $this->base_name !== $file )
 		{
 			return $links;
 		}
@@ -218,6 +221,12 @@ class Public_Contact_Data
 		$url  = admin_url( 'options-general.php' );
 		$text = __( 'Set public data', 'plugin_pcd' );
 		$link = "<a href='$url'>$text</a>";
+		$links[] = sprintf(
+			'<a href="%1$s">%2$s</a>',
+			admin_url( 'options-general.php' ),
+			__( 'Set public data', 'plugin_pcd' )
+		);
+		return $links;
 		return array_merge( $links, array ( $link ) );
 	}
 
