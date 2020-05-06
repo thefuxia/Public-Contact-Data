@@ -2,18 +2,18 @@
 declare( encoding = 'UTF-8' );
 /**
  * Plugin Name: Public Contact Data
- * Plugin URI:  https://github.com/toscho/Public-Contact-Data
+ * Plugin URI:  https://github.com/thefuxia/Public-Contact-Data
  * Text Domain: plugin_pcd
  * Domain Path: /lang
  * Description: Adds new fields to settings/general: email address, phone number and social network URIs.
  * Version:     2012.06.13
  * Required:    3.3
- * Author:      Thomas Scholz <info@toscho.de>
- * Author URI:  http://toscho.de
+ * Author:      Fuxia Scholz
+ * Author URI:  https://fuxia.me
  * License:     MIT
  * License URI: http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2012 Thomas Scholz
+ * Copyright (c) 2012 Fuxia Scholz
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -189,7 +189,6 @@ class Public_Contact_Data
 		$this->fields = array (
 			'email'      => __( 'Public mail address', 'plugin_pcd' ),
 			'phone'      => __( 'Public phone number', 'plugin_pcd' ),
-			'googleplus' => __( 'Google Plus', 'plugin_pcd' ),
 			'facebook'   => __( 'FaceBook', 'plugin_pcd' ),
 			'twitter'    => __( 'Twitter', 'plugin_pcd' )
 		);
